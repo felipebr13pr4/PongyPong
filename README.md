@@ -2,6 +2,10 @@
 
 This will probally just be a pong clone but with some more things.
 
+W to move up.
+S to move down.
+Make the ball go past the other paddle.
+
 # Notes
 
 Time to make pong.
