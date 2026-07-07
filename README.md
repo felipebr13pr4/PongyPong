@@ -11,8 +11,8 @@ Make the ball go past the other paddle.
 Time to make pong.
 
 Pong Core consists of
-- Player that can move up and down but doesn't pass from the screen boundaries.
-- Ball that constantly moves at 45° and hitting the screen boundaries or player/enemy adds 90° to its rotation.
+- Player paddle that can move up and down but doesn't pass from the screen boundaries.
+- Ball that constantly moves and bounces off screen and player/enemy paddles.
 - Score that makes it so if a ball passed you the enemy gains score and vice-versa.
 - Enemy ai, which there are alot to choose to make.
 
