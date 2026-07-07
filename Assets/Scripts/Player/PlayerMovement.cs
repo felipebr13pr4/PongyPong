@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float m_speed = 2;
-    private Rigidbody2D m_rigidbody2d;
+    private Rigidbody2D m_rigidBody2d;
     private float m_moveDir;
     
     private void Start()
     {
-        m_rigidbody2d = GetComponent<Rigidbody2D>();
+        m_rigidBody2d = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
         m_moveDir = Keyboard.current.wKey.wasPressedThisFrame ? 1 :
                     Keyboard.current.sKey.wasPressedThisFrame ? -1 : m_moveDir;
 
-        m_rigidbody2d.linearVelocity = new Vector2(0, m_moveDir * m_speed);
+        m_rigidBody2d.linearVelocity = new Vector2(0, m_moveDir * m_speed);
 
         m_moveDir = Keyboard.current.wKey.wasReleasedThisFrame ? 0 :
                     Keyboard.current.sKey.wasReleasedThisFrame ? 0 : m_moveDir;
