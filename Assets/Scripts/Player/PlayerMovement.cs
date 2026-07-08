@@ -16,21 +16,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        m_moveDir = Keyboard.current.wKey.wasPressedThisFrame ? 1 :
-                    Keyboard.current.sKey.wasPressedThisFrame ? -1 : m_moveDir;
-
-        m_rigidBody2d.linearVelocity = new Vector2(0, m_moveDir * m_speed);
-
-        m_moveDir = Keyboard.current.wKey.wasReleasedThisFrame ? 0 :
-                    Keyboard.current.sKey.wasReleasedThisFrame ? 0 : m_moveDir;
-
+        m_moveDir = Keyboard.current.wKey.isPressed ? 1 :
+                    Keyboard.current.sKey.isPressed ? -1 : 0;
     }
 
     private void FixedUpdate()
     {
+        m_rigidBody2d.linearVelocity = new Vector2(0, m_moveDir * m_speed);
         if (transform.position.y >= 3.5f)
-            m_moveDir = -1;
+        m_rigidBody2d.linearVelocity = new Vector2(0, -1 * m_speed);
         if (transform.position.y <= -3.5f)
-            m_moveDir = 1;
+        m_rigidBody2d.linearVelocity = new Vector2(0, 1 * m_speed);
     }
 }
