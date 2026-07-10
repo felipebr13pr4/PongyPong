@@ -10,14 +10,12 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D m_rigidBody2d;
     private Vector3 m_goToPosition;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         m_rigidBody2d = GetComponent<Rigidbody2D>();
         StartCoroutine(CalculateGoToPos());
     }
 
-    // Update is called once per frame
     private void Update()
     {
     }
@@ -63,8 +61,6 @@ public class EnemyMovement : MonoBehaviour
 
             if (pos.x > 7.5f || pos.x < -7.5f)
                 dir.x = -dir.x;
-
-            print(pos);
 
             safety++;
             if (safety > 1000)

@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
         m_rigidBody2d = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         m_moveDir = Keyboard.current.wKey.isPressed ? 1 :
                     Keyboard.current.sKey.isPressed ? -1 : 0;
@@ -23,9 +23,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         m_rigidBody2d.linearVelocity = new Vector2(0, m_moveDir * m_speed);
+     
         if (transform.position.y >= 3.5f)
-        m_rigidBody2d.linearVelocity = new Vector2(0, -1 * m_speed);
+        m_rigidBody2d.linearVelocity = new Vector2(0, Vector2.down.y * m_speed);
         if (transform.position.y <= -3.5f)
-        m_rigidBody2d.linearVelocity = new Vector2(0, 1 * m_speed);
+        m_rigidBody2d.linearVelocity = new Vector2(0, Vector2.up.y * m_speed);
     }
 }
