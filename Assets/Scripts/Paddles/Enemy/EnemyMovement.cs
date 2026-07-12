@@ -2,35 +2,25 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : PaddleMovement
 {
-    [SerializeField] private float m_speed = 2;
     [SerializeField] private BallMovement m_ball;
-    private Vector3 m_pretendBallPos = new Vector3(0,0,0);
-    private Rigidbody2D m_rigidBody2d;
     private Vector3 m_goToPosition;
 
-    private void Start()
+    private new void Start()
     {
-        m_rigidBody2d = GetComponent<Rigidbody2D>();
+        base.Start();
         StartCoroutine(CalculateGoToPos());
     }
 
-    private void Update()
-    {
-    }
-
-    private void FixedUpdate()
+    private new void FixedUpdate()
     {
         if (m_goToPosition.y >= transform.position.y)
             m_rigidBody2d.linearVelocity = new Vector2(0, 1 * m_speed);
         if (m_goToPosition.y <= transform.position.y)
             m_rigidBody2d.linearVelocity = new Vector2(0, -1 * m_speed);
 
-        if (transform.position.y >= 3.5f)
-            m_rigidBody2d.linearVelocity = new Vector2(0, -1 * m_speed);
-        if (transform.position.y <= -3.5f)
-            m_rigidBody2d.linearVelocity = new Vector2(0, 1 * m_speed);
+        base.FixedUpdate();
     }
 
     IEnumerator CalculateGoToPos()

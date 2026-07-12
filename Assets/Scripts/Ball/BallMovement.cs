@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class BallMovement : MonoBehaviour
 {
     [SerializeField] private int m_initialSpeed = 2;
@@ -18,13 +19,9 @@ public class BallMovement : MonoBehaviour
         StartCoroutine(RandomStartDirection());
     }
 
-    private void Update()
-    {
-        ScreenWallBounce();
-    }
-
     private void FixedUpdate()
     {
+        ScreenWallBounce();
         m_rigidBody2d.linearVelocity =
             m_direction.normalized * m_speed;
     }
@@ -33,14 +30,18 @@ public class BallMovement : MonoBehaviour
     {
         m_direction.x = -m_direction.x;
         m_speed += 1;
+        GameManager.Instance.SoundController.PlayAudio(AudioType.PaddleHit);
     }
 
     private void ScreenWallBounce()
     {
-        if (transform.position.y >= 4.5f)
+        if (transform.position.y >= 4.5f) {
             m_direction.y = -1;
-        if (transform.position.y <= -4.5f)
+            GameManager.Instance.SoundController.PlayAudio(AudioType.PaddleHit); 
+        }
+        if (transform.position.y <= -4.5f) {
             m_direction.y = 1;
+            GameManager.Instance.SoundController.PlayAudio(AudioType.PaddleHit); }
     }
 
     public IEnumerator RandomStartDirection()

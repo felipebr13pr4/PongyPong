@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class GameSceneController : MonoBehaviour
+public class SceneController : MonoBehaviour
 {
     private void Update()
     {
+        // Temporary, for testing purposes.
         if (Keyboard.current.rKey.wasPressedThisFrame)
             ReloadScene();
     }

@@ -37,12 +37,13 @@ public class Ball : MonoBehaviour
     {
         OnScore?.Invoke(type);
         m_hasScored = true;
+        GameManager.Instance.SoundController.PlayAudio(AudioType.BallScored);
         StartCoroutine(RepositionBall());
-    }
+}
 
     private IEnumerator RepositionBall()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.75f);
         transform.position = Vector3.zero;
         StartCoroutine(m_ballMovement.RandomStartDirection());
         m_hasScored = false;
