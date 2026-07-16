@@ -23,7 +23,7 @@ public class SaveSettingsButton : MonoBehaviour
 
     public void SavePrefs()
     {
-        PlayerPrefs.SetFloat("Volume", GameManager.Instance.AudioController.AudioVolume);
+        PlayerPrefs.SetFloat("Volume", GameManager.Instance.P_AudioController.P_AudioVolume);
         PlayerPrefs.SetInt("Screen Width", Screen.width);
         PlayerPrefs.SetInt("Screen Height", Screen.height);
         PlayerPrefs.SetInt("Full Screen", Screen.fullScreenMode == FullScreenMode.FullScreenWindow ? 1 : 0);

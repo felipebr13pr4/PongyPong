@@ -17,7 +17,7 @@ public class CheckmarkController : MonoBehaviour
         switch (type)
         {
             case CheckmarkType.Fullscreen:
-                GameManager.Instance.GameScreenController.FullScreen(state);
+                GameManager.Instance.p_GameScreenController.FullScreen(state);
                 return;
         }
     }

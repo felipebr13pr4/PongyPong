@@ -9,8 +9,8 @@ public class BallMovement : MonoBehaviour
     private int m_speed;
     private Rigidbody2D m_rigidBody2d;
     private Vector2 m_direction = new(0, 0);
-    public Vector2 Direction => m_direction;
-    public int Speed => m_speed;
+    public Vector2 P_Direction => m_direction;
+    public int P_Speed => m_speed;
 
     private void Start()
     {
@@ -30,18 +30,21 @@ public class BallMovement : MonoBehaviour
     {
         m_direction.x = -m_direction.x;
         m_speed += 1;
-        GameManager.Instance.AudioController.PlayAudio(AudioType.PaddleHit);
+        GameManager.Instance.P_AudioController.PlayAudio(AudioType.PaddleHit);
     }
 
     private void ScreenWallBounce()
     {
-        if (transform.position.y >= 4.5f) {
+        float maxTopInScreen = 5.1f;
+        float maxBottomInScreen = -5.1f;
+
+        if (transform.position.y >= maxTopInScreen) {
             m_direction.y = -1;
-            GameManager.Instance.AudioController.PlayAudio(AudioType.PaddleHit); 
+            GameManager.Instance.P_AudioController.PlayAudio(AudioType.PaddleHit); 
         }
-        if (transform.position.y <= -4.5f) {
+        if (transform.position.y <= maxBottomInScreen) {
             m_direction.y = 1;
-            GameManager.Instance.AudioController.PlayAudio(AudioType.PaddleHit); }
+            GameManager.Instance.P_AudioController.PlayAudio(AudioType.PaddleHit); }
     }
 
     public IEnumerator RandomStartDirection()

@@ -17,20 +17,20 @@ public class ButtonController : MonoBehaviour
         switch (type)
         {
             case ButtonType.Start:
-                GameManager.Instance.SceneController.LoadScene(SceneType.Game);
+                GameManager.Instance.P_SceneController.LoadScene(SceneType.Game);
                 return;
 
             case ButtonType.Retry:
-                GameManager.Instance.SceneController.ReloadScene();
+                GameManager.Instance.P_SceneController.ReloadScene();
                 return;
 
             case ButtonType.MainMenu:
-                GameManager.Instance.SceneController.LoadScene(SceneType.Menu);
+                GameManager.Instance.P_SceneController.LoadScene(SceneType.Menu);
                 return;
 
             case ButtonType.Quit:
                 PlayerPrefs.SetFloat("Volume",
-                                    GameManager.Instance.AudioController.AudioSource.volume);
+                                    GameManager.Instance.P_AudioController.P_AudioSource.volume);
                 PlayerPrefs.Save();
                 Application.Quit();
                 return;
