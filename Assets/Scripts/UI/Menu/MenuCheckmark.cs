@@ -14,6 +14,11 @@ public class MenuCheckmark : MonoBehaviour
         m_toggleComponent = GetComponent<Toggle>();
     }
 
+    private void Start()
+    {
+        initialState();
+    }
+
     private void OnEnable()
     {
         m_toggleComponent.onValueChanged.AddListener(CheckmarkClicked);
@@ -27,5 +32,15 @@ public class MenuCheckmark : MonoBehaviour
     private void CheckmarkClicked(bool state)
     {
         OnCheckmark?.Invoke(m_checkmarkType, state);
+    }
+
+    private void initialState()
+    {
+        switch (m_checkmarkType)
+        {
+            case CheckmarkType.Fullscreen:
+                m_toggleComponent.isOn = Screen.fullScreenMode == FullScreenMode.FullScreenWindow;
+                return;
+        }
     }
 }

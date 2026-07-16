@@ -30,18 +30,18 @@ public class BallMovement : MonoBehaviour
     {
         m_direction.x = -m_direction.x;
         m_speed += 1;
-        GameManager.Instance.SoundController.PlayAudio(AudioType.PaddleHit);
+        GameManager.Instance.AudioController.PlayAudio(AudioType.PaddleHit);
     }
 
     private void ScreenWallBounce()
     {
         if (transform.position.y >= 4.5f) {
             m_direction.y = -1;
-            GameManager.Instance.SoundController.PlayAudio(AudioType.PaddleHit); 
+            GameManager.Instance.AudioController.PlayAudio(AudioType.PaddleHit); 
         }
         if (transform.position.y <= -4.5f) {
             m_direction.y = 1;
-            GameManager.Instance.SoundController.PlayAudio(AudioType.PaddleHit); }
+            GameManager.Instance.AudioController.PlayAudio(AudioType.PaddleHit); }
     }
 
     public IEnumerator RandomStartDirection()

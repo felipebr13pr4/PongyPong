@@ -23,11 +23,11 @@ public class Ball : MonoBehaviour
     {
         if (m_hasScored) return;
 
-        if (transform.position.x >= 10)
+        if (transform.position.x >= 9.5f)
         {
             Score(PaddleType.Player);
         }
-        if (transform.position.x <= -10)
+        if (transform.position.x <= -9.5f)
         {
             Score(PaddleType.Enemy);
         }
@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
     {
         OnScore?.Invoke(type);
         m_hasScored = true;
-        GameManager.Instance.SoundController.PlayAudio(AudioType.BallScored);
+        GameManager.Instance.AudioController.PlayAudio(AudioType.BallScored);
         StartCoroutine(RepositionBall());
 }
 

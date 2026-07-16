@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class SoundController : MonoBehaviour
+public class AudioController : MonoBehaviour
 {
     [SerializeField] private AudioClip m_ballHitScreen;
     [SerializeField] private AudioClip m_ballScored;
@@ -18,6 +18,7 @@ public class SoundController : MonoBehaviour
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();
+        m_audioVolume = PlayerPrefs.GetFloat("Volume");
     }
 
     private void OnEnable()

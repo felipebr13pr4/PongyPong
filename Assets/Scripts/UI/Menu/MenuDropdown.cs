@@ -14,6 +14,11 @@ public class MenuDropdown : MonoBehaviour
         m_dropdownComponent = GetComponent<TMP_Dropdown>();
     }
 
+    private void Start()
+    {
+        initialState();
+    }
+
     private void OnEnable()
     {
         m_dropdownComponent.onValueChanged.AddListener(DropdownChanged);
@@ -28,5 +33,17 @@ public class MenuDropdown : MonoBehaviour
     {
         string optionName = m_dropdownComponent.options[index].text;
         OnDropdown?.Invoke(m_dropdownType, index, optionName);
+    }
+
+
+    private void initialState()
+    {
+        switch (m_dropdownType)
+        {
+            case DropdownType.ScreenRes:
+                m_dropdownComponent.value = Screen.width == 1920 ? 0 :
+                                            Screen.width == 1280 ? 1 : 2;
+                return;
+        }
     }
 }

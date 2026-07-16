@@ -24,7 +24,7 @@ public class PauseButton : MonoBehaviour
 
     public void TogglePause()
     {
-        GameManager.Instance.SoundController.PlayAudio(AudioType.PauseWindowOpen);
+        GameManager.Instance.AudioController.PlayAudio(AudioType.PauseWindowOpen);
         Time.timeScale = Time.timeScale > 0 ? 0 : 1;
         bool shouldOpenPauseWindow = Time.timeScale < 1;
         m_pauseWindow.gameObject.SetActive(shouldOpenPauseWindow);

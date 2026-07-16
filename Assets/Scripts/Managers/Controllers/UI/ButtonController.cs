@@ -30,7 +30,7 @@ public class ButtonController : MonoBehaviour
 
             case ButtonType.Quit:
                 PlayerPrefs.SetFloat("Volume",
-                                    GameManager.Instance.SoundController.AudioSource.volume);
+                                    GameManager.Instance.AudioController.AudioSource.volume);
                 PlayerPrefs.Save();
                 Application.Quit();
                 return;

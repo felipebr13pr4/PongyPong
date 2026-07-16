@@ -29,17 +29,17 @@ public class DropdownController : MonoBehaviour
             case 0:
                 if (optionName != "1920x1080") return;
                 StartCoroutine(
-                    GameManager.Instance.ScreenController.ChangeScreenResolution(1920, 1080));
+                    GameManager.Instance.GameScreenController.ChangeScreenResolution(1920, 1080));
                 return;
             case 1:
                 if (optionName != "1280x720") return;
                 StartCoroutine(
-                    GameManager.Instance.ScreenController.ChangeScreenResolution(1280, 720));
+                    GameManager.Instance.GameScreenController.ChangeScreenResolution(1280, 720));
                 return;
             case 2:
                 if (optionName != "960x540") return;
                 StartCoroutine(
-                    GameManager.Instance.ScreenController.ChangeScreenResolution(960, 540));
+                    GameManager.Instance.GameScreenController.ChangeScreenResolution(960, 540));
                 return;
         }
     }
