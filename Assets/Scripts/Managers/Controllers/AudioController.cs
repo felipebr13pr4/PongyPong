@@ -12,8 +12,8 @@ public class AudioController : MonoBehaviour
     
     private AudioSource m_audioSource;
 
-    public AudioSource AudioSource => m_audioSource;
-    public float AudioVolume => m_audioVolume;
+    public AudioSource P_AudioSource => m_audioSource;
+    public float P_AudioVolume => m_audioVolume;
 
     private void Start()
     {

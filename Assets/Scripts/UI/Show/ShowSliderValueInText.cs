@@ -21,8 +21,8 @@ public class ShowSliderValueInText : MonoBehaviour
     {
         float value = m_sliderType switch
         {
-            SliderType.Volume => GameManager.Instance.AudioController.CalculateVolumePercentage(),
-            _ => GameManager.Instance.AudioController.AudioVolume
+            SliderType.Volume => GameManager.Instance.P_AudioController.CalculateVolumePercentage(),
+            _ => GameManager.Instance.P_AudioController.P_AudioVolume
         };
         string strLenght = m_sliderType switch
         {

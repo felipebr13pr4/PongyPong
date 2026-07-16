@@ -16,7 +16,7 @@ public class MenuDropdown : MonoBehaviour
 
     private void Start()
     {
-        initialState();
+        InitialState();
     }
 
     private void OnEnable()
@@ -36,14 +36,29 @@ public class MenuDropdown : MonoBehaviour
     }
 
 
-    private void initialState()
+    private void InitialState()
     {
         switch (m_dropdownType)
         {
             case DropdownType.ScreenRes:
-                m_dropdownComponent.value = Screen.width == 1920 ? 0 :
-                                            Screen.width == 1280 ? 1 : 2;
+                m_dropdownComponent.value = HandleScreenResDropdown();
                 return;
         }
+    }
+
+    private int HandleScreenResDropdown()
+    {
+        int index = 0;
+        for (int i = 0; i < m_dropdownComponent.options.Count; i++)
+        {
+            string optionName = m_dropdownComponent.options[i].text;
+            string[] optionSize = m_dropdownComponent.options[i].text.Split("x");
+            if ((int.Parse)(optionSize[0]) == Screen.width &&
+                (int.Parse)(optionSize[1]) == Screen.height)
+            {
+                index = i;
+            }
+        }
+        return index;
     }
 }

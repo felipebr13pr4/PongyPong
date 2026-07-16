@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DropdownController : MonoBehaviour
@@ -17,30 +18,22 @@ public class DropdownController : MonoBehaviour
         switch (type)
         {
             case DropdownType.ScreenRes:
-                HandleScreenResDropdown(index, optionName);
+                HandleScreenResDropdown screenRes = new(optionName);
+                StartCoroutine(GameManager.Instance.p_GameScreenController.
+                    ChangeScreenResolution(screenRes.width, screenRes.height));
                 return;
         }
     }
 
-    private void HandleScreenResDropdown(int index, string optionName)
-    {
-        switch (index)
+    private struct HandleScreenResDropdown {
+        public int width;
+        public int height;
+        public HandleScreenResDropdown(string optionName)
         {
-            case 0:
-                if (optionName != "1920x1080") return;
-                StartCoroutine(
-                    GameManager.Instance.GameScreenController.ChangeScreenResolution(1920, 1080));
-                return;
-            case 1:
-                if (optionName != "1280x720") return;
-                StartCoroutine(
-                    GameManager.Instance.GameScreenController.ChangeScreenResolution(1280, 720));
-                return;
-            case 2:
-                if (optionName != "960x540") return;
-                StartCoroutine(
-                    GameManager.Instance.GameScreenController.ChangeScreenResolution(960, 540));
-                return;
+            string[] optionSize = optionName.Split("x");
+
+            width = (int.Parse)(optionSize[0]);
+            height = (int.Parse)(optionSize[1]);
         }
     }
 }

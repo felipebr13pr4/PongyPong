@@ -27,7 +27,7 @@ public class EnemyMovement : PaddleMovement
     {
         while (true)
         {
-            m_goToPosition = CalculateBallPos(m_ball.transform.position, m_ball.Direction);
+            m_goToPosition = CalculateBallPos(m_ball.transform.position, m_ball.P_Direction);
             yield return new WaitForSeconds(3f);
         }
     }
@@ -42,14 +42,20 @@ public class EnemyMovement : PaddleMovement
 
         int safety = 0;
 
-        while (pos.x < 7.4)
-        {
-            pos += (dir * m_ball.Speed) * 0.1f;
+        float xRightLimit = 7.5f;
+        float xLeftLimit = -7.5f;
 
-            if (pos.y > 4.5f || pos.y < -4.5f)
+        float yUpLimit = 5.1f;
+        float yDownLimit = -5.1f;
+
+        while (pos.x < xRightLimit)
+        {
+            pos += (dir * m_ball.P_Speed) * 0.1f;
+
+            if (pos.y > yUpLimit || pos.y < yDownLimit)
                 dir.y = -dir.y;
 
-            if (pos.x > 7.5f || pos.x < -7.5f)
+            if (pos.x > xRightLimit || pos.x < xLeftLimit)
                 dir.x = -dir.x;
 
             safety++;
