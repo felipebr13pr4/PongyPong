@@ -6,6 +6,22 @@ W to move up.
 S to move down.
 Make the ball go past the other paddle.
 
+# Development.
+
+I need to fix the main menu by making it the same as the main game.
+
+Theres also the empty ScoreController which i'll add things later, it'll likely be used for the achievements (If i won't do them, i'll delete it).
+
+Pressing R retries for testing purposes.
+
+# Done.
+
+Currently (i think) if the ball is too fast and touches the upper/bottom parts of the paddle for one frame it might consider it as if it hit the side (hit box is in the front), i'll see how to fix it later.
+- Fixed it by putting the ball's collision detection to Continuous.
+
+Currently all pause buttons do nothing. (Retry, settings, menu, quit).
+- Made they do stuff.
+
 # Notes
 
 Time to make pong.
@@ -25,3 +41,4 @@ Ideas for fun?
 - Maybe achievements? To test events?
 - Maybe make multiple enemy ais and make it chooseable?
 - Maybe make it so you can flip sides and the scoring system to be able to correctly identify and separate who scored?
+- Maybe test masking? To make it so when the ball is more to the left it turns one color and vice-versa.

@@ -1,0 +1,32 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+[RequireComponent(typeof(Button))]
+public class PauseButton : MonoBehaviour
+{
+    [SerializeField] private RectTransform m_pauseWindow;
+    private Button m_pauseButton;
+
+    private void Awake()
+    {
+        m_pauseButton = GetComponent<Button>();
+    }
+
+    private void OnEnable()
+    {
+        m_pauseButton.onClick.AddListener(TogglePause);
+    }
+
+    private void OnDisable()
+    {
+        m_pauseButton.onClick.RemoveListener(TogglePause);
+    }
+
+    public void TogglePause()
+    {
+        GameManager.Instance.P_AudioController.PlayAudio(AudioType.PauseWindowOpen);
+        Time.timeScale = Time.timeScale > 0 ? 0 : 1;
+        bool shouldOpenPauseWindow = Time.timeScale < 1;
+        m_pauseWindow.gameObject.SetActive(shouldOpenPauseWindow);
+    }
+}

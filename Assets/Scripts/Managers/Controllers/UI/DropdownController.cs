@@ -1,0 +1,39 @@
+using System;
+using UnityEngine;
+
+public class DropdownController : MonoBehaviour
+{
+    private void OnEnable()
+    {
+        MenuDropdown.OnDropdown += ExecuteAction;
+    }
+
+    private void OnDisable()
+    {
+        MenuDropdown.OnDropdown -= ExecuteAction;
+    }
+
+    private void ExecuteAction(DropdownType type, int index, string optionName)
+    {
+        switch (type)
+        {
+            case DropdownType.ScreenRes:
+                HandleScreenResDropdown screenRes = new(optionName);
+                StartCoroutine(GameManager.Instance.p_GameScreenController.
+                    ChangeScreenResolution(screenRes.width, screenRes.height));
+                return;
+        }
+    }
+
+    private struct HandleScreenResDropdown {
+        public int width;
+        public int height;
+        public HandleScreenResDropdown(string optionName)
+        {
+            string[] optionSize = optionName.Split("x");
+
+            width = (int.Parse)(optionSize[0]);
+            height = (int.Parse)(optionSize[1]);
+        }
+    }
+}
