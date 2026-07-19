@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PaddleMovement : MonoBehaviour
@@ -14,9 +13,12 @@ public class PaddleMovement : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        if (transform.position.y >= 3.5f)
+        float maxTopInScreen = 4.1f;
+        float maxBottomInScreen = -4.1f;
+
+        if (transform.position.y >= maxTopInScreen)
             m_rigidBody2d.linearVelocity = new Vector2(0, Vector2.down.y * m_speed);
-        if (transform.position.y <= -3.5f)
+        if (transform.position.y <= maxBottomInScreen)
             m_rigidBody2d.linearVelocity = new Vector2(0, Vector2.up.y * m_speed);
     }
 }

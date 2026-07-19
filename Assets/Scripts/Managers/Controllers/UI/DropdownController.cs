@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class DropdownController : MonoBehaviour
@@ -19,7 +18,7 @@ public class DropdownController : MonoBehaviour
         {
             case DropdownType.ScreenRes:
                 HandleScreenResDropdown screenRes = new(optionName);
-                StartCoroutine(GameManager.Instance.p_GameScreenController.
+                StartCoroutine(GameManager.Instance.P_GameScreenController.
                     ChangeScreenResolution(screenRes.width, screenRes.height));
                 return;
         }

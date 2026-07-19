@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     
     public SceneController P_SceneController { get; private set; }
 
-    public GameScreenController p_GameScreenController { get; private set; }
+    public GameScreenController P_GameScreenController { get; private set; }
 
     private void Awake()
     {
@@ -30,6 +30,6 @@ public class GameManager : MonoBehaviour
     {
         P_AudioController = GetComponent<AudioController>();        
         P_SceneController = GetComponent<SceneController>();
-        p_GameScreenController = GetComponent<GameScreenController>();
+        P_GameScreenController = GetComponent<GameScreenController>();
     }
 }

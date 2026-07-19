@@ -4,7 +4,10 @@ This will probally just be a pong clone but with some more things.
 
 W to move up.
 S to move down.
-Make the ball go past the other paddle.
+Make the ball go past the other paddle to score.
+
+If you clone this project, be aware that your game window resolution must correlate to the game application window resolutions.
+(320x180, 480x270, 640x360, 800x450, 960x540, 1120x630, 1280x720, 1440x810, 1600x900, 1760x990, 1920x1080 (ideal))
 
 # Development.
 
