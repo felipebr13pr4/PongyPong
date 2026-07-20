@@ -15,6 +15,6 @@ public class ScoreText : ScoreHandler
     {
         base.Score(type);
 
-        m_TextMeshPro.text = m_playerScore + " : " + m_enemyScore;
+        m_TextMeshPro.text = P_PlayerScore + " : " + P_EnemyScore;
     }
 }

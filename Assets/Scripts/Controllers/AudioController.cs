@@ -15,6 +15,20 @@ public class AudioController : MonoBehaviour
     public AudioSource P_AudioSource => m_audioSource;
     public float P_AudioVolume => m_audioVolume;
 
+    public static AudioController Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();

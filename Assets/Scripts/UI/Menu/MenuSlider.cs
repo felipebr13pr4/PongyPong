@@ -35,6 +35,6 @@ public class MenuSlider : MonoBehaviour
     private void SliderInitialValue()
     {
         m_sliderComponent.value =
-            m_sliderType == SliderType.Volume ? GameManager.Instance.P_AudioController.P_AudioVolume : 0;
+            m_sliderType == SliderType.Volume ? AudioController.Instance.P_AudioVolume : 0;
     }
 }

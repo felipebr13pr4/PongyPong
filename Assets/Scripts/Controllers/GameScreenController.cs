@@ -3,13 +3,27 @@ using UnityEngine;
 
 public class GameScreenController : MonoBehaviour
 {
+    public static GameScreenController Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start()
     {
         bool fullScreen = PlayerPrefs.GetInt("Full Screen") != 0;
         FullScreen(fullScreen);
         int width = PlayerPrefs.GetInt("Screen Width");
         int height = PlayerPrefs.GetInt("Screen Height");
-        ChangeScreenResolution(width, height);
+        StartCoroutine(ChangeScreenResolution(width, height));
     }
 
     public void FullScreen(bool state)

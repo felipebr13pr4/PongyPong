@@ -7,4 +7,6 @@ public enum ButtonType
     MainMenu = 2,
     Quit = 3,
     Settings = 4,
+    SaveSettings = 5,
+    Achievements = 6,
 }

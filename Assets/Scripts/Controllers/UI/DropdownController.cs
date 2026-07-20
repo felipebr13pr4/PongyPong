@@ -18,7 +18,7 @@ public class DropdownController : MonoBehaviour
         {
             case DropdownType.ScreenRes:
                 HandleScreenResDropdown screenRes = new(optionName);
-                StartCoroutine(GameManager.Instance.P_GameScreenController.
+                StartCoroutine(GameScreenController.Instance.
                     ChangeScreenResolution(screenRes.width, screenRes.height));
                 return;
         }

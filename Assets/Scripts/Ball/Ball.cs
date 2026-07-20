@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour
     {
         OnScore?.Invoke(type);
         m_hasScored = true;
-        GameManager.Instance.P_AudioController.PlayAudio(AudioType.BallScored);
+        AudioController.Instance.PlayAudio(AudioType.BallScored);
         StartCoroutine(RepositionBall());
 }
 
