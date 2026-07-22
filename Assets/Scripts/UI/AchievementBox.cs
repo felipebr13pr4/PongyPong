@@ -39,10 +39,10 @@ public class AchievementBox : MonoBehaviour
     {
         int amount = type switch
         {
-            AchievementType.PlayerScore => AchievementController.Instance.P_PlayerScore,
-            AchievementType.EnemyScore => AchievementController.Instance.P_EnemyScore,
-            AchievementType.BallHit => AchievementController.Instance.P_BallHitScreenAmount,
-            AchievementType.PaddleHit => AchievementController.Instance.P_PaddleHitScreenAmount,
+            AchievementType.PlayerScore => GameStatsController.Instance.P_PlayerScore,
+            AchievementType.EnemyScore => GameStatsController.Instance.P_EnemyScore,
+            AchievementType.PaddleHit => GameStatsController.Instance.P_PaddleHitScreenAmount,
+            AchievementType.BallHit => GameStatsController.Instance.P_BallHitScreenAmount,
             _ => 0,
         };
         return amount;

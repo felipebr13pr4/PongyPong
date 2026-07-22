@@ -2,6 +2,20 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
+    public static ButtonController Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void OnEnable()
     {
         MenuButton.OnButtonTypeClicked += ExecuteAction;
@@ -29,21 +43,13 @@ public class ButtonController : MonoBehaviour
                 return;
 
             case ButtonType.Quit:
-                SavePlayerPrefs();
+                SavingController.Instance.SaveAll();
                 Application.Quit();
                 return;
 
             case ButtonType.SaveSettings:
-                SavePlayerPrefs();
+                SavingController.Instance.SaveAll();
                 return;
         }
-    }
-
-    private void SavePlayerPrefs()
-    {
-        PlayerPrefs.SetFloat("Volume", AudioController.Instance.P_AudioVolume);
-        PlayerPrefs.SetInt("Screen Width", Screen.width);
-        PlayerPrefs.SetInt("Screen Height", Screen.height);
-        PlayerPrefs.SetInt("Full Screen", Screen.fullScreenMode == FullScreenMode.FullScreenWindow ? 1 : 0);
     }
 }

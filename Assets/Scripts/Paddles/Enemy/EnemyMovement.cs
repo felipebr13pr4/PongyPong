@@ -6,10 +6,12 @@ public class EnemyMovement : PaddleMovement
 {
     [SerializeField] private BallMovement m_ball;
     private Vector3 m_goToPosition;
+    private float m_aiLevel;
 
     private new void Start()
     {
         base.Start();
+        m_aiLevel = GameStatsController.Instance.P_EnemyDifficulty;
         StartCoroutine(CalculateGoToPos());
     }
 
@@ -28,7 +30,7 @@ public class EnemyMovement : PaddleMovement
         while (true)
         {
             m_goToPosition = CalculateBallPos(m_ball.transform.position, m_ball.P_Direction);
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(m_aiLevel);
         }
     }
 
@@ -61,7 +63,6 @@ public class EnemyMovement : PaddleMovement
             safety++;
             if (safety > 1000)
             {
-                print("Ball Safety Engaged");
                 break;
             }
         }

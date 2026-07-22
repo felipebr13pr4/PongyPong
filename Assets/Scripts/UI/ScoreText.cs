@@ -1,5 +1,6 @@
 using TMPro;
 
+[UnityEngine.RequireComponent(typeof(TextMeshProUGUI))]
 public class ScoreText : ScoreHandler
 {
     private TextMeshProUGUI m_TextMeshPro;

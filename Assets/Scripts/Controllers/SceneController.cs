@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
@@ -18,15 +17,10 @@ public class SceneController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Update()
-    {
-        // Temporary, for testing purposes.
-        if (Keyboard.current.rKey.wasPressedThisFrame)
-            ReloadScene();
-    }
-
     public void LoadScene(SceneType type)
     {
+        SavingController.Instance.SaveAll();
+        
         string sceneToLoad = type switch
         {
             SceneType.Game => "MainGame",
@@ -41,6 +35,8 @@ public class SceneController : MonoBehaviour
 
     public void ReloadScene()
     {
+        SavingController.Instance.SaveAll();
+        
         Time.timeScale = 1;
 
         string currentScene = SceneManager.GetActiveScene().name;

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class ShowSliderValueInText : MonoBehaviour
@@ -10,31 +11,36 @@ public class ShowSliderValueInText : MonoBehaviour
     void Start()
     {
         m_TextMeshPro = GetComponent<TextMeshProUGUI>();
-    }
 
-    private void Update()
-    {
-        ChangeText();
-    }
-
-    private void ChangeText()
-    {
         float value = m_sliderType switch
         {
-            SliderType.Volume => AudioController.Instance.CalculateVolumePercentage(),
-            _ => AudioController.Instance.P_AudioVolume
+            SliderType.Volume => AudioController.Instance.P_AudioVolume,
+            SliderType.Difficulty => GameStatsController.Instance.P_EnemyDifficulty,
+            _ => 1f
         };
-        string strLenght = m_sliderType switch
-        {
-            SliderType.Volume => "F0",
-            _ => "F0"
-        };
-        string str = m_sliderType switch
-        {
-            SliderType.Volume => "%",
-            _ => ""
-        };
-        m_TextMeshPro.text = value.ToString(strLenght) + str;
+
+        ChangeText(m_sliderType, value);
+    }
+    
+    private void OnEnable()
+    {
+        MenuSlider.OnSliderChangedByType += ChangeText;
     }
 
+    private void OnDisable()
+    {
+        MenuSlider.OnSliderChangedByType -= ChangeText;
+    }
+
+    private void ChangeText(SliderType type, float value)
+    {
+        if (type != m_sliderType) return;
+        string strLenght = m_sliderType switch
+        {
+            SliderType.Volume => "P0",
+            SliderType.Difficulty => "F2",
+            _ => "F0"
+        };
+        m_TextMeshPro.text = value.ToString(strLenght);
+    }
 }

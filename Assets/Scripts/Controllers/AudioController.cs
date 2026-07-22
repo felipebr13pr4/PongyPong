@@ -35,16 +35,6 @@ public class AudioController : MonoBehaviour
         m_audioVolume = PlayerPrefs.GetFloat("Volume");
     }
 
-    private void OnEnable()
-    {
-        MenuSlider.OnSliderChangedByType += AudioChange;
-    }
-
-    private void OnDisable()
-    {
-        MenuSlider.OnSliderChangedByType -= AudioChange;
-    }
-
     public void PlayAudio(AudioType type)
     {
         m_audioSource.pitch = Random.Range(0.75f, 1.25f);
@@ -64,15 +54,8 @@ public class AudioController : MonoBehaviour
         }
     }
 
-    public void AudioChange(SliderType type, float value)
+    public void SetAudio(float value)
     {
-        if (type != SliderType.Volume) return;
         m_audioVolume = value;
-    }
-
-    public int CalculateVolumePercentage()
-    {
-        int volume = (int)(m_audioVolume * 100);
-        return volume;
     }
 }

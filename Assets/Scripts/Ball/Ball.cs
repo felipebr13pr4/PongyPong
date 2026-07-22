@@ -46,7 +46,7 @@ public class Ball : MonoBehaviour
 
     private IEnumerator RepositionBall()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return null;
         transform.position = Vector3.zero;
         StartCoroutine(m_ballMovement.RandomStartDirection());
         m_hasScored = false;

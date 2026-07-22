@@ -34,7 +34,7 @@ public class BallMovement : MonoBehaviour
 
         AudioController.Instance.PlayAudio(AudioType.PaddleHit);
 
-        AchievementController.Instance.P_PaddleHitScreenAmount += 1;
+        GameStatsController.Instance.P_PaddleHitScreenAmount += 1;
     }
 
     private void CheckScreenWallBounce()
@@ -53,7 +53,7 @@ public class BallMovement : MonoBehaviour
     private void ScreenWallBounce(int dir)
     {
         m_direction.y = dir;
-        AchievementController.Instance.P_BallHitScreenAmount += 1;
+        GameStatsController.Instance.P_BallHitScreenAmount += 1;
         AudioController.Instance.PlayAudio(AudioType.BallHitScreen);
     }
 
