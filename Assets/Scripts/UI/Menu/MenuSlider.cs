@@ -9,11 +9,9 @@ public class MenuSlider : MonoBehaviour
     private Slider m_sliderComponent;
     public static event Action<SliderType, float> OnSliderChangedByType;
 
-    private void Awake()
-    {
-        m_sliderComponent = GetComponent<Slider>();
-        SliderInitialValue();
-    }
+    private void Awake() => m_sliderComponent = GetComponent<Slider>();
+
+    private void Start() => SliderInitialValue();
 
     private void OnEnable()
     {
@@ -35,7 +33,7 @@ public class MenuSlider : MonoBehaviour
         m_sliderComponent.value = m_sliderType switch
         {
             SliderType.Volume => AudioController.Instance.P_AudioVolume,
-            SliderType.Difficulty => GameStatsController.Instance.P_EnemyDifficulty,
+            SliderType.Difficulty => PlayerStatsController.Instance.P_EnemyDifficulty,
             _ => 0,
         };
     }

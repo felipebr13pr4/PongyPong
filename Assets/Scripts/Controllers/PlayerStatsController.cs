@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameStatsController : ScoreHandler
+public class PlayerStatsController : ScoreHandler
 {
     private int m_ballHitScreenAmount;
     private int m_paddleHitScreenAmount;
@@ -18,7 +18,7 @@ public class GameStatsController : ScoreHandler
     { get => m_enemyDifficulty;
         set => m_enemyDifficulty = value; }
 
-    public static GameStatsController Instance { get; private set; }
+    public static PlayerStatsController Instance { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -38,8 +38,6 @@ public class GameStatsController : ScoreHandler
         m_enemyScore = PlayerPrefs.GetInt("Enemy Score");
         m_paddleHitScreenAmount = PlayerPrefs.GetInt("Paddle Hits");
         m_ballHitScreenAmount = PlayerPrefs.GetInt("Ball Hits");
-        m_enemyDifficulty = PlayerPrefs.GetInt("Difficulty");
-
-        if (m_enemyDifficulty == 0) m_enemyDifficulty = 3;
+        m_enemyDifficulty = PlayerPrefs.GetFloat("Difficulty", 3f);
     }
 }

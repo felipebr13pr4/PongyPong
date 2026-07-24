@@ -34,6 +34,8 @@ I re-learned
 - How to make a method executable in the editor (in the right button pop up window).
 - How to properly config pixel sprites.
 - About how when you've made a code in another project, you can re-use it. (And that this makes it so you don't need to write things from scratch every time and helps alot.)
+- Override and virtual.
+- Unity order importance.
 
 Things i re-learned but did not implement (and that i'll likely need to eventually use when the situation comes)
 - Lists
@@ -54,6 +56,9 @@ I learned
 - How to make a scrollable UI panel.
 - More about UI in general.
 - Using AI as a learning tool. Mostly to help with specific questions like a personalized Google, and even to explain simpler things. I did not use it for vibe-coding. I have only used it on two parts where it (accidentally) generated code that worked. But, as long as the code is something i understand, something that makes sense, is debuggable and doesn't have bugs, from what i understood then its ok. AI did not build the project for me..
+- A little more about player pref.
+- A little more about IEnumerators.
+- Readonly vs cosnt.
 
 Next time i should
 - Search more.
@@ -92,5 +97,7 @@ Ideas for fun?
 - Maybe make it so you can flip sides and the scoring system to be able to correctly identify and separate who scored?
 - Maybe test masking? To make it so when the ball is more to the left it turns one color and vice-versa.
 
+
+# PT BR
 
 I'll add a PT-BR version here later.

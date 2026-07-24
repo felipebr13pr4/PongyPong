@@ -35,7 +35,7 @@ public class SliderController : MonoBehaviour
                 return;
 
             case SliderType.Difficulty:
-                GameStatsController.Instance.P_EnemyDifficulty = value;
+                PlayerStatsController.Instance.P_EnemyDifficulty = value;
                 return;
         }
     }

@@ -22,7 +22,7 @@ public class ScoreHandler : MonoBehaviour
     {
         if (type == PaddleType.Player)
             m_playerScore += 1;
-        if (type == PaddleType.Enemy)
+        else if (type == PaddleType.Enemy)
             m_enemyScore += 1;
     }
 }

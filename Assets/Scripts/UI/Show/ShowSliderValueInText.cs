@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class ShowSliderValueInText : MonoBehaviour
@@ -15,7 +14,7 @@ public class ShowSliderValueInText : MonoBehaviour
         float value = m_sliderType switch
         {
             SliderType.Volume => AudioController.Instance.P_AudioVolume,
-            SliderType.Difficulty => GameStatsController.Instance.P_EnemyDifficulty,
+            SliderType.Difficulty => PlayerStatsController.Instance.P_EnemyDifficulty,
             _ => 1f
         };
 

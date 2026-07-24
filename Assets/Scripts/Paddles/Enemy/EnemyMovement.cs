@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class EnemyMovement : PaddleMovement
 {
@@ -8,14 +7,14 @@ public class EnemyMovement : PaddleMovement
     private Vector3 m_goToPosition;
     private float m_aiLevel;
 
-    private new void Start()
+    protected override void Start()
     {
         base.Start();
-        m_aiLevel = GameStatsController.Instance.P_EnemyDifficulty;
+        m_aiLevel = PlayerStatsController.Instance.P_EnemyDifficulty;
         StartCoroutine(CalculateGoToPos());
     }
 
-    private new void FixedUpdate()
+    protected override void FixedUpdate()
     {
         if (m_goToPosition.y >= transform.position.y)
             m_rigidBody2d.linearVelocity = new Vector2(0, 1 * m_speed);

@@ -11,7 +11,7 @@ public class PlayerMovement : PaddleMovement
                     Keyboard.current.sKey.isPressed ? -1 : 0;
     }
 
-    private new void FixedUpdate()
+    protected override void FixedUpdate()
     {
         m_rigidBody2d.linearVelocity = new Vector2(0, m_moveDir * m_speed);
 

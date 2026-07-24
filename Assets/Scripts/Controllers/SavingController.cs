@@ -26,9 +26,11 @@ public class SavingController : MonoBehaviour
 
     private IEnumerator AutoSave()
     {   
-        yield return new WaitForSecondsRealtime(15);
-        if (!m_isAutoSaveOn) yield break;
-        Save();
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(15);
+            if (m_isAutoSaveOn) Save();
+        }
     }
 
     public void SaveAll()
@@ -39,11 +41,11 @@ public class SavingController : MonoBehaviour
     
     private void Save()
     {
-        PlayerPrefs.SetInt("Player Score", GameStatsController.Instance.P_PlayerScore);
-        PlayerPrefs.SetInt("Enemy Score", GameStatsController.Instance.P_EnemyScore);
-        PlayerPrefs.SetInt("Paddle Hits", GameStatsController.Instance.P_PaddleHitScreenAmount);
-        PlayerPrefs.SetInt("Ball Hits", GameStatsController.Instance.P_BallHitScreenAmount);
-        PlayerPrefs.SetFloat("Difficulty", GameStatsController.Instance.P_EnemyDifficulty);
+        PlayerPrefs.SetInt("Player Score", PlayerStatsController.Instance.P_PlayerScore);
+        PlayerPrefs.SetInt("Enemy Score", PlayerStatsController.Instance.P_EnemyScore);
+        PlayerPrefs.SetInt("Paddle Hits", PlayerStatsController.Instance.P_PaddleHitScreenAmount);
+        PlayerPrefs.SetInt("Ball Hits", PlayerStatsController.Instance.P_BallHitScreenAmount);
+        PlayerPrefs.SetFloat("Difficulty", PlayerStatsController.Instance.P_EnemyDifficulty);
     }
 
     private void SavePlayerPrefs()

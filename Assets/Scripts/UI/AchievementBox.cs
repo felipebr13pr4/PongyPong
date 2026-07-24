@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -39,10 +38,10 @@ public class AchievementBox : MonoBehaviour
     {
         int amount = type switch
         {
-            AchievementType.PlayerScore => GameStatsController.Instance.P_PlayerScore,
-            AchievementType.EnemyScore => GameStatsController.Instance.P_EnemyScore,
-            AchievementType.PaddleHit => GameStatsController.Instance.P_PaddleHitScreenAmount,
-            AchievementType.BallHit => GameStatsController.Instance.P_BallHitScreenAmount,
+            AchievementType.PlayerScore => PlayerStatsController.Instance.P_PlayerScore,
+            AchievementType.EnemyScore => PlayerStatsController.Instance.P_EnemyScore,
+            AchievementType.PaddleHit => PlayerStatsController.Instance.P_PaddleHitScreenAmount,
+            AchievementType.BallHit => PlayerStatsController.Instance.P_BallHitScreenAmount,
             _ => 0,
         };
         return amount;

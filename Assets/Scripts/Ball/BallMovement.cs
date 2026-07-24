@@ -34,18 +34,15 @@ public class BallMovement : MonoBehaviour
 
         AudioController.Instance.PlayAudio(AudioType.PaddleHit);
 
-        GameStatsController.Instance.P_PaddleHitScreenAmount += 1;
+        PlayerStatsController.Instance.P_PaddleHitScreenAmount += 1;
     }
 
     private void CheckScreenWallBounce()
     {
-        float maxTopInScreen = 5.1f;
-        float maxBottomInScreen = -5.1f;
-
-        if (transform.position.y >= maxTopInScreen) {
+        if (transform.position.y >= ScreenBounds.Top) {
             ScreenWallBounce(-1);
         }
-        if (transform.position.y <= maxBottomInScreen) {
+        if (transform.position.y <= ScreenBounds.Bottom) {
             ScreenWallBounce(1);
         }
     }
@@ -53,7 +50,7 @@ public class BallMovement : MonoBehaviour
     private void ScreenWallBounce(int dir)
     {
         m_direction.y = dir;
-        GameStatsController.Instance.P_BallHitScreenAmount += 1;
+        PlayerStatsController.Instance.P_BallHitScreenAmount += 1;
         AudioController.Instance.PlayAudio(AudioType.BallHitScreen);
     }
 
