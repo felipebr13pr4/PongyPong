@@ -2,7 +2,7 @@
 
 This repo is for learning. Comments are welcome. I will not be accepting pullings or modifications as that is not the purpose of this repo.
 
-This will probally just be a Pong clone but with some more things.
+This will probably just be a Pong clone but with some more things.
 
 W to move up.
 S to move down.
@@ -11,7 +11,7 @@ Make the ball go past the other paddle to score.
 If you clone this project, be aware that your game window resolution must correlate to the available resolutions.
 (320x180, 480x270, 640x360, 800x450, 960x540, 1120x630, 1280x720, 1440x810, 1600x900, 1760x990, 1920x1080 (ideal))
 
-Link itch: (i'll put it here when i create it)
+Link itch: https://felipebr13pr.itch.io/pongy-pong
 
 # Development Notes
 
@@ -58,7 +58,7 @@ I learned
 - Using AI as a learning tool. Mostly to help with specific questions like a personalized Google, and even to explain simpler things. I did not use it for vibe-coding. I have only used it on two parts where it (accidentally, i had told it to avoid making code) generated code that worked. But, as long as the code is something i understand, something that makes sense, is debuggable and doesn't have bugs, from what i understood then its ok. AI did not build the project for me. I used Claude at the end of the project to check for small mistakes and it did well, having a second pairs of eyes is nice.
 - A little more about player pref.
 - A little more about IEnumerators.
-- Readonly vs cosnt.
+- Readonly vs const.
 
 Next time i should
 - Search more.
@@ -161,7 +161,7 @@ Eu aprendi
 - Usar IA como uma ferramenta de aprendizado. Majoritariamente para perguntas especificas que nem um Google pessoal, e até para explicar coisas basicas. Eu não usei para vibe-coding. Eu apenas usei em duas partes onde (acidentalmente, eu havia falado para evitar de fazer codigos) gerou codigos que funcionaram. Mas, se o codigo é algo que eu consigo entender, algo que faz sentido, é depurável e não tem bugs, até onde eu entendi é ok. IA não construiu o projeto para mim. Eu usei Claude no final do projeto para checar pequenos erros e foi bem, ter um segundo par de olhos é bom.
 - Um pouco mais sobre player prefs.
 - Um pouco mais sobre IEnumerators
-- Readonly vs cosnt.
+- Readonly vs const.
 
 Na proxima vez eu devo
 - Pesquisar mais.
