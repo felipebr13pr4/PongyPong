@@ -8,13 +8,10 @@ public class MenuSlider : MonoBehaviour
     [SerializeField] private SliderType m_sliderType = SliderType.Volume;
     private Slider m_sliderComponent;
     public static event Action<SliderType, float> OnSliderChangedByType;
-    public static event Action<float> OnSliderChanged;
 
-    private void Awake()
-    {
-        m_sliderComponent = GetComponent<Slider>();
-        SliderInitialValue();
-    }
+    private void Awake() => m_sliderComponent = GetComponent<Slider>();
+
+    private void Start() => SliderInitialValue();
 
     private void OnEnable()
     {
@@ -29,12 +26,15 @@ public class MenuSlider : MonoBehaviour
     private void SliderChanged(float value)
     {
         OnSliderChangedByType?.Invoke(m_sliderType, value);
-        OnSliderChanged?.Invoke(value);
     }
 
     private void SliderInitialValue()
     {
-        m_sliderComponent.value =
-            m_sliderType == SliderType.Volume ? GameManager.Instance.P_AudioController.P_AudioVolume : 0;
+        m_sliderComponent.value = m_sliderType switch
+        {
+            SliderType.Volume => AudioController.Instance.P_AudioVolume,
+            SliderType.Difficulty => PlayerStatsController.Instance.P_EnemyDifficulty,
+            _ => 0,
+        };
     }
 }

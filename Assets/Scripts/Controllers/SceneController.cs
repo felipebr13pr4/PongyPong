@@ -1,18 +1,26 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    private void Update()
+    public static SceneController Instance { get; private set; }
+    private void Awake()
     {
-        // Temporary, for testing purposes.
-        if (Keyboard.current.rKey.wasPressedThisFrame)
-            ReloadScene();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public void LoadScene(SceneType type)
     {
+        SavingController.Instance.SaveAll();
+        
         string sceneToLoad = type switch
         {
             SceneType.Game => "MainGame",
@@ -27,6 +35,8 @@ public class SceneController : MonoBehaviour
 
     public void ReloadScene()
     {
+        SavingController.Instance.SaveAll();
+        
         Time.timeScale = 1;
 
         string currentScene = SceneManager.GetActiveScene().name;

@@ -23,14 +23,11 @@ public class Ball : MonoBehaviour
     {
         if (m_hasScored) return;
 
-        float outOfScreenRight = 10.5f;
-        float outOfScreenLeft = -10.5f;
-
-        if (transform.position.x >= outOfScreenRight)
+        if (transform.position.x >= ScreenBounds.Right+1)
         {
             Score(PaddleType.Player);
         }
-        if (transform.position.x <= outOfScreenLeft)
+        else if (transform.position.x <= ScreenBounds.Left-1)
         {
             Score(PaddleType.Enemy);
         }
@@ -40,13 +37,13 @@ public class Ball : MonoBehaviour
     {
         OnScore?.Invoke(type);
         m_hasScored = true;
-        GameManager.Instance.P_AudioController.PlayAudio(AudioType.BallScored);
+        AudioController.Instance.PlayAudio(AudioType.BallScored);
         StartCoroutine(RepositionBall());
 }
 
     private IEnumerator RepositionBall()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return null;
         transform.position = Vector3.zero;
         StartCoroutine(m_ballMovement.RandomStartDirection());
         m_hasScored = false;

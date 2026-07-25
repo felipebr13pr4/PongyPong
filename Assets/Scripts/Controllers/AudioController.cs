@@ -15,20 +15,24 @@ public class AudioController : MonoBehaviour
     public AudioSource P_AudioSource => m_audioSource;
     public float P_AudioVolume => m_audioVolume;
 
+    public static AudioController Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start()
     {
         m_audioSource = GetComponent<AudioSource>();
-        m_audioVolume = PlayerPrefs.GetFloat("Volume");
-    }
-
-    private void OnEnable()
-    {
-        MenuSlider.OnSliderChangedByType += AudioChange;
-    }
-
-    private void OnDisable()
-    {
-        MenuSlider.OnSliderChangedByType -= AudioChange;
+        m_audioVolume = PlayerPrefs.GetFloat("Volume", 1f);
     }
 
     public void PlayAudio(AudioType type)
@@ -50,15 +54,8 @@ public class AudioController : MonoBehaviour
         }
     }
 
-    public void AudioChange(SliderType type, float value)
+    public void SetAudio(float value)
     {
-        if (type != SliderType.Volume) return;
         m_audioVolume = value;
-    }
-
-    public int CalculateVolumePercentage()
-    {
-        int volume = (int)(m_audioVolume * 100);
-        return volume;
     }
 }

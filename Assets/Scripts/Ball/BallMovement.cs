@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -21,7 +22,7 @@ public class BallMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ScreenWallBounce();
+        CheckScreenWallBounce();
         m_rigidBody2d.linearVelocity =
             m_direction.normalized * m_speed;
     }
@@ -30,21 +31,27 @@ public class BallMovement : MonoBehaviour
     {
         m_direction.x = -m_direction.x;
         m_speed += 1;
-        GameManager.Instance.P_AudioController.PlayAudio(AudioType.PaddleHit);
+
+        AudioController.Instance.PlayAudio(AudioType.PaddleHit);
+
+        PlayerStatsController.Instance.P_PaddleHitScreenAmount += 1;
     }
 
-    private void ScreenWallBounce()
+    private void CheckScreenWallBounce()
     {
-        float maxTopInScreen = 5.1f;
-        float maxBottomInScreen = -5.1f;
-
-        if (transform.position.y >= maxTopInScreen) {
-            m_direction.y = -1;
-            GameManager.Instance.P_AudioController.PlayAudio(AudioType.PaddleHit); 
+        if (transform.position.y >= ScreenBounds.Top) {
+            ScreenWallBounce(-1);
         }
-        if (transform.position.y <= maxBottomInScreen) {
-            m_direction.y = 1;
-            GameManager.Instance.P_AudioController.PlayAudio(AudioType.PaddleHit); }
+        if (transform.position.y <= ScreenBounds.Bottom) {
+            ScreenWallBounce(1);
+        }
+    }
+
+    private void ScreenWallBounce(int dir)
+    {
+        m_direction.y = dir;
+        PlayerStatsController.Instance.P_BallHitScreenAmount += 1;
+        AudioController.Instance.PlayAudio(AudioType.BallHitScreen);
     }
 
     public IEnumerator RandomStartDirection()

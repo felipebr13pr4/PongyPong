@@ -1,8 +1,21 @@
-using System;
 using UnityEngine;
 
 public class DropdownController : MonoBehaviour
 {
+    public static DropdownController Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void OnEnable()
     {
         MenuDropdown.OnDropdown += ExecuteAction;
@@ -19,7 +32,7 @@ public class DropdownController : MonoBehaviour
         {
             case DropdownType.ScreenRes:
                 HandleScreenResDropdown screenRes = new(optionName);
-                StartCoroutine(GameManager.Instance.p_GameScreenController.
+                StartCoroutine(GameScreenController.Instance.
                     ChangeScreenResolution(screenRes.width, screenRes.height));
                 return;
         }

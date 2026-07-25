@@ -53,8 +53,8 @@ public class MenuDropdown : MonoBehaviour
         {
             string optionName = m_dropdownComponent.options[i].text;
             string[] optionSize = m_dropdownComponent.options[i].text.Split("x");
-            if ((int.Parse)(optionSize[0]) == Screen.width &&
-                (int.Parse)(optionSize[1]) == Screen.height)
+            if (int.Parse(optionSize[0]) == Screen.width &&
+                int.Parse(optionSize[1]) == Screen.height)
             {
                 index = i;
             }
