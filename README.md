@@ -113,7 +113,7 @@ Faça a bola passar da outra raquete para marcar pontos.
 Se voce clonar este projeto, saiba que a sua resolução de janela de jogo tem que ser a mesma das disponiveis no jogo.
 (320x180, 480x270, 640x360, 800x450, 960x540, 1120x630, 1280x720, 1440x810, 1600x900, 1760x990, 1920x1080 (ideal))
 
-Link do itch: (Irei botar aqui quando eu cria-lo)
+Link do itch: https://felipebr13pr.itch.io/pongy-pong
 
 # Notas de desenvolvimento.
 
